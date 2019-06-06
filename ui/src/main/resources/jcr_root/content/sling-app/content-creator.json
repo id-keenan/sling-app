@@ -1,0 +1,5 @@
+{
+  "jcr:primaryType": "sling:Folder",
+  "sling:resourceType" : "sling-app/pages/creatorPage",
+  "title" : "Content Creator"
+}
