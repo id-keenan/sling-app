@@ -1,3 +1,4 @@
 {
-    "jcr:primaryType" : "nt:unstructured"
+    "jcr:primaryType" : "nt:unstructured",
+    "sling:resourceSuperType": "sling-app/pages/page"
 }

@@ -20,8 +20,6 @@ import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 public class AppointmentCreator extends SlingAllMethodsServlet {
 
     private ObjectMapper objectMapper = new ObjectMapper();
-    
-
 
     @Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {

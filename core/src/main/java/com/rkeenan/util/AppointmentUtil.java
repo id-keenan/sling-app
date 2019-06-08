@@ -1,6 +1,7 @@
 package com.rkeenan.util;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import com.rkeenan.model.AppointmentModel;
 
@@ -29,19 +30,26 @@ public class AppointmentUtil {
     public static String createAppointment(AppointmentModel model, ResourceResolver resourceResolver) {
         Resource root = resourceResolver.getResource(appointmentRoot);
         if (root == null) {
-            //shit went wrong, fix it
+            log.error("Root does not exist.");
             return null;
         }
         try {
-            Resource policyPath = ResourceUtil.getOrCreateResource(resourceResolver, createPath(root.getPath(), model.getPolicyNum()), new HashMap<>(), "", true);
+            Map<String, Object> policyMap = new HashMap<>();
+            policyMap.put(ResourceResolver.PROPERTY_RESOURCE_TYPE, "sling-app/pages/policyPage");
+            Resource policyPath = ResourceUtil.getOrCreateResource(resourceResolver, createPath(root.getPath(), model.getPolicyNum()), policyMap, "", true);
             int numChild = IteratorUtils.size(policyPath.listChildren());
-            Resource appointmentResource = ResourceUtil.getOrCreateResource(resourceResolver, createPath(policyPath.getPath(), Integer.toString(numChild + 1)), model.getPropertyMap(), "", true);
+            Resource appointmentResource = ResourceUtil.getOrCreateResource(resourceResolver, createPath(policyPath.getPath(), Integer.toString(numChild + 1)), addResType(model.getPropertyMap()), "", true);
             return appointmentResource.getPath();
         } catch (PersistenceException e) {
             log.error("Error persisting data. User is not logged in (probably)");
         }
 
         return "";
+    }
+
+    private static Map<String, Object> addResType(Map<String, Object> properties) {
+        properties.put(ResourceResolver.PROPERTY_RESOURCE_TYPE, "sling-app/pages/appointmentDetailPage");
+        return properties;
     }
 
     private static String createPath(String... parts) {
