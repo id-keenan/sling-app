@@ -1,4 +1,4 @@
-<form action="/appointment-creator" method="POST" id="postData">
+<form action="/appointment-creator" method="POST" id="appointment-creator--form">
     <div class="form-field">
         <label for="location-destination">Location Destination</label>
         <input id="location-destination" type="text" name="location-destination" />
@@ -9,7 +9,7 @@
     </div>
     <div class="form-field">
         <label for="policy-num">Policy Number</label>
-        <input id="policy-num" type="text" name="policy-num" />
+        <input id="policy-num" type="text" name="policy-num" pattern="[A-Za-z0-9]+" />
     </div>
     <div class="form-field">
         <label for="time-pickup">Pickup Time</label>
