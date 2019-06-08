@@ -6,11 +6,11 @@ import java.util.Map;
 
 public class AppointmentModel {
 
-    private static final String PROP_LOC_DEST = "locationDestination";
-    private static final String PROP_LOC_PICKUP = "locationPickup";
-    private static final String PROP_POLICY_NUM = "policyNum";
-    private static final String PROP_TIME_PICKUP = "timePickup";
-    private static final String PROP_TIME_DROPOFF = "timeDropoff";
+    private static final String PROP_LOC_DEST = "location-destination";
+    private static final String PROP_LOC_PICKUP = "location-pickup";
+    private static final String PROP_POLICY_NUM = "policy-num";
+    private static final String PROP_TIME_PICKUP = "time-pickup";
+    private static final String PROP_TIME_DROPOFF = "time-dropoff";
     private static final String PROP_DRIVER = "driver";
     private static final String PROP_COST = "cost";
 
