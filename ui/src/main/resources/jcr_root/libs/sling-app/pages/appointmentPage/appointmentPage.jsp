@@ -13,4 +13,5 @@
   <body>
     <sling:include path="form" resourceType="sling-app/components/appointmentForm" />
   </body>
+  <script src="/etc/clientlibs/sling-app/form.js"></script>
 </html>
