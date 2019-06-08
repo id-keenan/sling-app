@@ -1,7 +1,6 @@
 package com.rkeenan.model;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,8 +17,8 @@ public class AppointmentModel {
     private String locationDestination;
     private String locationPickup;
     private String policyNum;
-    private Date timePickup;
-    private Date timeDropoff;
+    private Calendar timePickup;
+    private Calendar timeDropoff;
     private String driver;
     private String cost;
 
@@ -27,14 +26,14 @@ public class AppointmentModel {
         this.locationDestination = params.get(PROP_LOC_DEST)[0];
         this.locationPickup = params.get(PROP_LOC_PICKUP)[0];
         this.policyNum = params.get(PROP_POLICY_NUM)[0];
-        this.timePickup = getDateFromString(params.get(PROP_TIME_PICKUP)[0]);
-        this.timeDropoff = getDateFromString(params.get(PROP_TIME_DROPOFF)[0]);
+        this.timePickup = getCalendarFromString(params.get(PROP_TIME_PICKUP)[0]);
+        this.timeDropoff = getCalendarFromString(params.get(PROP_TIME_DROPOFF)[0]);
         this.driver = params.get(PROP_DRIVER)[0];
         this.cost = params.get(PROP_COST)[0];
     }
 
-    private Date getDateFromString(String dateString) {
-        return Calendar.getInstance().getTime();
+    private Calendar getCalendarFromString(String dateString) {
+        return Calendar.getInstance();
     }
 
     public Map<String, Object> getPropertyMap() {
@@ -61,11 +60,11 @@ public class AppointmentModel {
         return policyNum;
     }
 
-    public Date getTimePickup() {
+    public Calendar getTimePickup() {
         return timePickup;
     }
 
-    public Date getTimeDropoff() {
+    public Calendar getTimeDropoff() {
         return timeDropoff;
     }
 
