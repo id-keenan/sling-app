@@ -1,10 +1,19 @@
 package com.rkeenan.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class AppointmentModel {
+
+    private static final Logger log = LoggerFactory.getLogger(AppointmentModel.class);
 
     private static final String PROP_LOC_DEST = "location-destination";
     private static final String PROP_LOC_PICKUP = "location-pickup";
@@ -28,7 +37,7 @@ public class AppointmentModel {
         this.locationDestination = params.get(PROP_LOC_DEST)[0];
         this.locationPickup = params.get(PROP_LOC_PICKUP)[0];
         this.policyNum = params.get(PROP_POLICY_NUM)[0];
-        this.datePickup = getCalendarFromString(params.get(PROP_TIME_PICKUP)[0]);
+        this.datePickup = getCalendarFromString(params.get(PROP_DATE_PICKUP)[0]);
         this.timePickup = params.get(PROP_TIME_PICKUP)[0];
         this.timeDropoff = params.get(PROP_TIME_DROPOFF)[0];
         this.driver = params.get(PROP_DRIVER)[0];
@@ -36,6 +45,15 @@ public class AppointmentModel {
     }
 
     private Calendar getCalendarFromString(String dateString) {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date parsed = df.parse(dateString);
+            Calendar dateTime = Calendar.getInstance();
+            dateTime.setTime(parsed);
+            return dateTime;
+        } catch (ParseException e) {
+            log.error("Error parsing date.");
+        }
         return Calendar.getInstance();
     }
 
