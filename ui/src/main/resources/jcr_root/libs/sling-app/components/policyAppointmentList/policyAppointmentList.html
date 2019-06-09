@@ -1,0 +1,7 @@
+<div data-sly-use.model="com.rkeenan.components.model.AppointmentListModel">
+    <div>Policy Number is ${model.policyNum}</div>
+    <sly data-sly-use.template="templates.html"/>
+    <ul data-sly-list="${model.appointments}">
+        <sly data-sly-call="${template.listItem @appointment=item}"/>
+    </ul>
+</div>

@@ -1,0 +1,25 @@
+<sly data-sly-template.listItem="${@ appointment}">
+    <li class="appointment">
+        <div>
+            ${appointment.locationPickup}
+        </div>
+        <div>
+            ${appointment.locationDestination}
+        </div>
+        <div>
+            ${'yyy-MM-dd' @ format=appointment.datePickup}
+        </div>
+        <div>
+            ${appointment.timePickup}
+        </div>
+        <div>
+            ${appointment.timeDropoff}
+        </div>
+        <div>
+            ${appointment.driver}
+        </div>
+        <div>
+            ${appointment.cost}
+        </div>
+    </li>
+</sly>

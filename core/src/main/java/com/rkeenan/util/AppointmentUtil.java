@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static com.rkeenan.Constants.APPT_DETAIL_PAGE_RES_TYPE;
-import static com.rkeenan.Constants.APPT_POLICY_PAGE_RES_TYPE;
+import static com.rkeenan.Constants.POLICY_PAGE_RES_TYPE;
 
 public class AppointmentUtil {
 
@@ -38,7 +38,7 @@ public class AppointmentUtil {
         }
         try {
             Map<String, Object> policyMap = new HashMap<>();
-            policyMap.put(ResourceResolver.PROPERTY_RESOURCE_TYPE, APPT_POLICY_PAGE_RES_TYPE);
+            policyMap.put(ResourceResolver.PROPERTY_RESOURCE_TYPE, POLICY_PAGE_RES_TYPE);
             Resource policyPath = ResourceUtil.getOrCreateResource(resourceResolver, createPath(root.getPath(), model.getPolicyNum()), policyMap, "", true);
             int numChild = IteratorUtils.size(policyPath.listChildren());
             Resource appointmentResource = ResourceUtil.getOrCreateResource(resourceResolver, createPath(policyPath.getPath(), Integer.toString(numChild + 1)), addResType(model.getPropertyMap()), "", true);
@@ -58,6 +58,17 @@ public class AppointmentUtil {
             return resource;
         } else {
             return getAppointmentDetailPage(resource.getParent());
+        }
+    }
+
+    public static Resource getPolicyPage(Resource resource) {
+        if (resource == null) {
+            return null;
+        }
+        if (resource.isResourceType(POLICY_PAGE_RES_TYPE)) {
+            return resource;
+        } else {
+            return getPolicyPage(resource.getParent());
         }
     }
 
