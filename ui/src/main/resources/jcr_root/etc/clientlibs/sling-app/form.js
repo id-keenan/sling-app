@@ -1,8 +1,9 @@
 const apptModal = document.querySelector('.appt-created--modal'),
     apptLink = apptModal.querySelector('.review-new-appt'),
     apptCloseModal = apptModal.querySelector('.close-modal'),
-    apptFormInputs = ['location-destination','location-pickup','policy-num','date-pickup','time-pickup','time-dropoff','driver','cost']
-
+    apptFormInputs = ['location-destination','location-pickup','policy-num','date-pickup','time-pickup','time-dropoff','driver','cost'],
+    apptToggleBtn = document.querySelector('.appt-creator--nav-btn'),
+    apptCreatorAccodrion = document.querySelector('.appt-creator--accordion')
 // let resetForm = apptFormInputs.map((inputVal) => {
 //     let temp = document.getElementById(inputVal)
 //     return temp.value = ''
@@ -62,12 +63,27 @@ let resetFormInputs = function(arr) {
 //
 // testFunc(apptFormInputs)
 
+let toggleCreateAppt = function() {
+    event.preventDefault()
+    let btnSpan = apptToggleBtn.querySelector('span')
+    let btnIcon = apptToggleBtn.querySelector('.icon')
+    // btnSpan.innerHTML = 'Close'
+    apptCreatorAccodrion.open ? apptCreatorAccodrion.open = false : apptCreatorAccodrion.open = true
+    apptCreatorAccodrion.open ? btnSpan.innerHTML = 'Close' : btnSpan.innerHTML = 'Add Appointment'
+    apptCreatorAccodrion.open ? btnIcon.className = 'icon close' : btnIcon.className = 'icon plus'
+}
+
 document.getElementById('appt-creator--form').addEventListener('submit', postData)
 apptCloseModal.addEventListener('click', closeModal)
+apptToggleBtn.addEventListener('click', toggleCreateAppt)
 
 function closeModal() {
     event.preventDefault()
     apptModal.close()
+    let pathArray = window.location.pathname.split('/')
+    if (pathArray[pathArray.length-1] !== 'create.html' ) {
+        window.location.reload()
+    }
 }
 
 document.addEventListener('click', function(event) {

@@ -1,13 +1,17 @@
-<div>
-    <a href="/content/sling-app/appointments/create.html">Create New Appointment</a>
-</div>
+<!--<div>-->
+    <!--<a href="/content/sling-app/appointments/create.html">Create New Appointment</a>-->
+<!--</div>-->
+<sly data-sly-include="../header/header.html" />
 <div data-sly-use.childList="${'com.rkeenan.components.model.ChildListModel' @resType='sling-app/pages/detailPages/policyPage'}"
     data-sly-list.child="${childList.children}" class="policy-list">
     <div data-sly-use.model="${'com.rkeenan.components.model.PolicyAppointmentListModel' @ currentResource=child}" class="policy-item">
-        <a href="${model.policyPageLink}.html">Policy Number: ${model.policyNum}</a>
+        <a class="policy-title--link" href="${model.policyPageLink}.html">
+            <h3>Policy Number:</h3>
+            <p>${model.policyNum}</p>
+        </a>
         <sly data-sly-use.template="../common/templates.html"/>
-        <div data-sly-list="${model.appointments}" class="appointment-list">
+        <ul data-sly-list="${model.appointments}" class="appt-list">
             <sly data-sly-call="${template.listItem @appointment=item}"/>
-        </div>
+        </ul>
     </div>
 </div>

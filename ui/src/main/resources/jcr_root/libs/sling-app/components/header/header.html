@@ -1,0 +1,23 @@
+<sly data-sly-use.model="com.rkeenan.components.model.DashboardModel"
+     data-sly-use.model="com.rkeenan.components.model.PolicyAppointmentListModel" />
+
+<header class="appt-header">
+  <div class="appt-header--nav">
+    <a class="dashboard-back-btn nav-btn" href="/content/sling-app.html">
+      <div class="arrow-left icon"></div>
+      <span>Back to Dashboard</span>
+    </a>
+  </div>
+  <h1 data-sly-test="${model.policyNum}" class="appt-header--title">Policy Number: <span>${model.policyNum}</span></h1>
+  <h1 data-sly-test="${!model.policyNum}" class="appt-header--title">Appointments</span></h1>
+  <div class="app-header--meta">
+    <a class="appt-creator--nav-btn nav-btn" href="#">
+      <span>Add Appointment</span>
+      <div class="plus icon"></div>
+    </a>
+  </div>
+</header>
+<details class="appt-creator--accordion">
+  <summary></summary>
+  <sly data-sly-include="../appointmentForm/appointmentForm.html" />
+</details>
