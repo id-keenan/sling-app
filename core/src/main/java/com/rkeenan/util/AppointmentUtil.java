@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static com.rkeenan.Constants.APPT_DETAIL_PAGE_RES_TYPE;
+import static com.rkeenan.Constants.DASHBOARD_PAGE_RES_TYPE;
 import static com.rkeenan.Constants.POLICY_PAGE_RES_TYPE;
 
 public class AppointmentUtil {
@@ -80,6 +81,17 @@ public class AppointmentUtil {
             return resource;
         } else {
             return getPage(resource.getParent());
+        }
+    }
+
+    public static Resource getDashboardPage(Resource resource) {
+        if (resource == null) {
+            return null;
+        }
+        if (resource.isResourceType(DASHBOARD_PAGE_RES_TYPE)) {
+            return resource;
+        } else {
+            return getDashboardPage(resource.getParent());
         }
     }
 

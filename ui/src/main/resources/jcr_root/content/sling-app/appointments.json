@@ -1,5 +1,5 @@
 {
   "jcr:primaryType": "sling:Folder",
-  "sling:resourceType" : "sling-app/pages/appointmentPage",
+  "sling:resourceType" : "sling-app/pages/landingPages/appointmentPage",
   "title" : "Appointment Manager"
 }

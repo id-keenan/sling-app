@@ -76,3 +76,43 @@ h3 {
 .actions a {
   margin-bottom: 30px;
 }
+
+.dashboard-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: 50px 0;
+}
+
+.dashboard-circle {
+  background-color: #5183AA;
+  border-radius: 50%;
+  width: 50%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-list {
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.dashboard-item > a {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background-color: #2C5372;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 15px;
+  margin-bottom: 2px;
+}
+
+.dashboard-item > a:hover {
+  background-color: #1B364B;
+}

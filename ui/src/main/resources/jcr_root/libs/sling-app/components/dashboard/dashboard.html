@@ -1,0 +1,10 @@
+<section class="dashboard-container">
+    <div class="dashboard-circle">
+        <div data-sly-use.childList="${'com.rkeenan.components.model.ChildListModel' @ resType='.*/pages/landingPages/.*', recursive=true}"
+             data-sly-list.child="${childList.children}" class="dashboard-list">
+            <div class="dashboard-item">
+                <a href="${child.path}.html">${child.title}</a>
+            </div>
+        </div>
+    </div>
+</section>

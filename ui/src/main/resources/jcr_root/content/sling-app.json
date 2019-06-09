@@ -1,5 +1,5 @@
 {
   "jcr:primaryType": "sling:Folder",
-  "sling:resourceType" : "sling-app/pages/page",
-  "title" : "Sling Tutorial"
+  "sling:resourceType" : "sling-app/pages/landingPages/dashboardPage",
+  "title" : "Dashboard"
 }
