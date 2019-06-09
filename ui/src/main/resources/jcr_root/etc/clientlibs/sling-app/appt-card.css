@@ -1,0 +1,49 @@
+.appt-card {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #fff;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  border: 1px solid #222c31;
+  border-radius: .25rem;
+  word-wrap: break-word;
+  transition: .4s ease box-shadow;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.0), 0 3px 1px -2px rgba(0,0,0,.0), 0 1px 5px 0 rgba(0,0,0,.0);
+}
+
+.appt-card:hover,
+.appt-card:focus {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+.appt-card + .appt-card {
+  margin-top: 20px;
+}
+
+.appt-card--meta {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.appt-card--meta + .appt-card--meta {
+  margin-top: 8px;
+}
+
+.appt-card h3,
+.appt-card p {
+  margin: 0;
+  line-height: 1;
+}
+
+.appt-card h3 {
+  font-size: 22px;
+  margin: 0 10px 0 0;
+}
+
+.appt-card p {
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}

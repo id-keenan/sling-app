@@ -1,25 +1,33 @@
 <sly data-sly-template.listItem="${@ appointment}">
-    <a href="${appointment.pageLink}.html" class="appointment">
+    <a href="${appointment.pageLink}.html" class="appointment appt-card">
+        <div class="appt-card--meta appt-pickup">
         <div>
-            ${appointment.locationPickup}
+          <h3>Pickup:</h3>
+          <p>${appointment.locationPickup}</p>
         </div>
-        <div>
-            ${appointment.locationDestination}
+        <div class="appt-card--meta appt-pickup">
+            <h3>Destination:</h3>
+            <p>${appointment.locationDestination}</p>
         </div>
-        <div>
-            ${'yyy-MM-dd' @ format=appointment.datePickup}
+        <div class="appt-card--meta appt-pickup">
+            <h3>Pickup Date:</h3>
+            <p>${'yyy-MM-dd' @ format=appt.datePickup}</p>
         </div>
-        <div>
-            ${appointment.timePickup}
+        <div class="appt-card--meta appt-pickup">
+            <h3>Pickup Time:</h3>
+            <p>${appointment.timePickup}</p>
         </div>
-        <div>
-            ${appointment.timeDropoff}
+        <div class="appt-card--meta appt-pickup">
+            <h3>Dropoff Time:</h3>
+            <p>${appointment.timeDropoff}</p>
         </div>
-        <div>
-            ${appointment.driver}
+        <div class="appt-card--meta appt-pickup">
+            <h3>Driver:</h3>
+            <p>${appointment.driver}</p>
         </div>
-        <div>
-            ${appointment.cost}
+        <div class="appt-card--meta appt-pickup">
+            <h3>Cost:</h3>
+            <p><span>$</span>${appointment.cost}</p>
         </div>
     </a>
 </sly>

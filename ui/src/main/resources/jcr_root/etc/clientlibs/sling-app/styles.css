@@ -2,14 +2,15 @@
 
 :root {
   --white: #fff;
+  --black: #333;
+  --primaryC: #475c7a;
+  --secondaryC: #685d79;
 }
 
-body {
+html {
   font-family: 'Work Sans', sans-serif;
-}
-
-h3 {
-  margin-bottom: 80px;
+  font-size: 16px;
+  color: var(--primaryC);
 }
 
 .appt-creator {
@@ -21,31 +22,65 @@ h3 {
 
 .appt-creator header {
   font-size: 30px;
+  font-weight: 300;
   margin: 0 0 30px;
 }
 
 [action="/appointment-creator"] {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
 }
 
+form input::placeholder,
+form input::-webkit-input-placeholder,
+form input::-moz-placeholder {
+  color: var(--secondaryC);
+}
+
+form [type="text"],
+form [type="date"],
+form [type="time"] {
+  color: var(--secondaryC);
+  padding: 8px 14px;
+  min-height: 24px;
+  font-size: 1rem;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+}
+
+form [type="submit"] {
+  font-size: 16px;
+  min-height: 30px;
+  border: 1px solid currentColor;
+  margin: 10px 0 0;
+  padding: 14px 20px;
+  cursor: pointer;
+  transition: .4s ease box-shadow;
+  box-shadow: 0 0 0 0 currentColor;
+}
+
+form [type="submit"]:hover {
+  box-shadow: -6px 6px 0 0 currentColor;
+}
+
 .form-field {
   display: flex;
   flex-flow: column;
+  width: calc(50% - 16px);
+  padding: 0 8px;
+  margin: 10px 0;
 }
 
-.form-field + .form-field {
-  margin-top: 1rem;
+.form-field label {
+  font-size: 18px;
+  margin: 0 0 8px;
 }
 
-.form-field input {
-  padding: 8px;
-  height: auto;
-  font-size: 1rem;
-  border: 1px solid #333;
-}
-
+/* Dialog */
 .appt-created--modal {
   position: absolute;
   top: 50%;
@@ -59,11 +94,15 @@ h3 {
 }
 
 .appt-created--modal[open] {
-   display: flex;
+  display: flex;
 }
 
 .appt-created--modal[open] + form {
   filter: blur(1.7px);
+}
+
+.appt-created--modal h3 {
+  margin-bottom: 80px;
 }
 
 .actions {
