@@ -2,6 +2,9 @@
 <html>
   <head>
     <title>${resource.title}</title>
+    <title><%= resource.getValueMap().get("title", "Title") %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/etc/clientlibs/sling-app/styles.css">
   </head>
 
   <body>
