@@ -116,3 +116,48 @@ h3 {
 .dashboard-item > a:hover {
   background-color: #1B364B;
 }
+
+.appointment-list {
+  display: flex;
+  flex-flow: column;
+  flex-direction: row;
+  width: 100%;
+}
+
+.appointment {
+  width: 20%;
+  border-radius: 15px;
+  display: flex;
+  flex-flow: column;
+  padding: 10px 10px;
+  text-decoration: none;
+  background-color: #2C5372;
+  color: #fff;
+  margin-right: 2px;
+}
+
+.appointment:hover {
+  background-color: #1B364B;
+}
+
+.policy-item {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.policy-item > a {
+  width: 20%;
+  border-radius: 15px;
+  display: flex;
+  flex-flow: column;
+  padding: 10px 10px;
+  text-decoration: none;
+  background-color: #2C5372;
+  color: #fff;
+  margin: 10px 0px;
+}
+
+.policy-item > a:hover {
+  background-color: #1B364B;
+}

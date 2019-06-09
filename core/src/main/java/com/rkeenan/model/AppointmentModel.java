@@ -37,6 +37,7 @@ public class AppointmentModel {
     private String timeDropoff;
     private String driver;
     private String cost;
+    private String pageLink;
 
     public AppointmentModel(SlingHttpServletRequest request) {
         Map<String, String[]> params = request.getParameterMap();
@@ -62,6 +63,7 @@ public class AppointmentModel {
         this.timeDropoff = properties.get(PROP_TIME_DROPOFF, "");
         this.driver = properties.get(PROP_DRIVER, "");
         this.cost = properties.get(PROP_COST, "");
+        this.pageLink = resource.getPath();
     }
 
     private Calendar getCalendarFromString(String dateString) {
@@ -120,5 +122,9 @@ public class AppointmentModel {
 
     public String getCost() {
         return cost;
+    }
+
+    public String getPageLink() {
+        return pageLink;
     }
 }

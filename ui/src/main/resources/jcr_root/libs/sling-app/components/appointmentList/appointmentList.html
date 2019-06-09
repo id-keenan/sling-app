@@ -3,12 +3,11 @@
 </div>
 <div data-sly-use.childList="${'com.rkeenan.components.model.ChildListModel' @resType='sling-app/pages/detailPages/policyPage'}"
     data-sly-list.child="${childList.children}">
-    <div data-sly-use.model="${'com.rkeenan.components.model.PolicyAppointmentListModel' @ currentResource=child}">
-        ${policy.name}
-        <div>Policy Number is ${model.policyNum}</div>
+    <div data-sly-use.model="${'com.rkeenan.components.model.PolicyAppointmentListModel' @ currentResource=child}" class="policy-item">
+        <a href="${model.policyPageLink}.html">Policy Number: ${model.policyNum}</a>
         <sly data-sly-use.template="../common/templates.html"/>
-        <ul data-sly-list="${model.appointments}">
+        <div data-sly-list="${model.appointments}" class="appointment-list">
             <sly data-sly-call="${template.listItem @appointment=item}"/>
-        </ul>
+        </div>
     </div>
 </div>

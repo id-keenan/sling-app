@@ -19,6 +19,7 @@ import org.apache.sling.models.annotations.Optional;
 public class PolicyAppointmentListModel {
 
     private String policyNum;
+    private String policyPageLink;
     private List<AppointmentModel> appointments;
 
     @Inject
@@ -34,7 +35,11 @@ public class PolicyAppointmentListModel {
             currentResource = resource;
         }
         Resource policyPage = AppointmentUtil.getPolicyPage(currentResource);
+        if (policyPage == null) {
+            return;
+        }
         policyNum = policyPage.getName();
+        policyPageLink = policyPage.getPath();
         appointments = new ArrayList<>();
         Iterator<Resource> children = policyPage.listChildren();
         while (children.hasNext()) {
@@ -44,6 +49,10 @@ public class PolicyAppointmentListModel {
 
     public String getPolicyNum() {
         return policyNum;
+    }
+
+    public String getPolicyPageLink() {
+        return policyPageLink;
     }
 
     public List<AppointmentModel> getAppointments() {
