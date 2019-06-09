@@ -4,22 +4,36 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+
 import com.rkeenan.model.AppointmentModel;
 import com.rkeenan.util.AppointmentUtil;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Optional;
 
 @Model(adaptables = SlingHttpServletRequest.class)
-public class AppointmentListModel {
+public class PolicyAppointmentListModel {
 
     private String policyNum;
     private List<AppointmentModel> appointments;
 
-    public AppointmentListModel(SlingHttpServletRequest request) {
-        Resource currentPage = request.getResource();
-        Resource policyPage = AppointmentUtil.getPolicyPage(currentPage);
+    @Inject
+    private Resource resource;
+
+    @Inject
+    @Optional
+    private Resource currentResource;
+
+    @PostConstruct
+    protected void init() {
+        if (currentResource == null) {
+            currentResource = resource;
+        }
+        Resource policyPage = AppointmentUtil.getPolicyPage(currentResource);
         policyNum = policyPage.getName();
         appointments = new ArrayList<>();
         Iterator<Resource> children = policyPage.listChildren();

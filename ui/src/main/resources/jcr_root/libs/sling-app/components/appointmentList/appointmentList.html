@@ -1,0 +1,14 @@
+<div>
+    <a href="/content/sling-app/appointments/create.html">Create New Appointment</a>
+</div>
+<div data-sly-use.childList="${'com.rkeenan.components.model.ChildListModel' @resType='sling-app/pages/policyPage'}"
+    data-sly-list.child="${childList.children}">
+    <div data-sly-use.model="${'com.rkeenan.components.model.PolicyAppointmentListModel' @ currentResource=child}">
+        ${policy.name}
+        <div>Policy Number is ${model.policyNum}</div>
+        <sly data-sly-use.template="../common/templates.html"/>
+        <ul data-sly-list="${model.appointments}">
+            <sly data-sly-call="${template.listItem @appointment=item}"/>
+        </ul>
+    </div>
+</div>

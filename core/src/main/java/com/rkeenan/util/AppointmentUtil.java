@@ -72,6 +72,17 @@ public class AppointmentUtil {
         }
     }
 
+    public static Resource getPage(Resource resource) {
+        if (resource == null) {
+            return null;
+        }
+        if (resource.getResourceType().contains("/pages/")) {
+            return resource;
+        } else {
+            return getPage(resource.getParent());
+        }
+    }
+
     private static Map<String, Object> addResType(Map<String, Object> properties) {
         properties.put(ResourceResolver.PROPERTY_RESOURCE_TYPE, APPT_DETAIL_PAGE_RES_TYPE);
         return properties;
