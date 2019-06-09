@@ -8,9 +8,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ValueMap;
+import org.apache.sling.models.annotations.Model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Model(adaptables = {SlingHttpServletRequest.class, Resource.class})
 public class AppointmentModel {
 
     private static final Logger log = LoggerFactory.getLogger(AppointmentModel.class);
@@ -33,15 +38,30 @@ public class AppointmentModel {
     private String driver;
     private String cost;
 
-    public AppointmentModel(Map<String, String[]> params) {
-        this.locationDestination = params.get(PROP_LOC_DEST)[0];
-        this.locationPickup = params.get(PROP_LOC_PICKUP)[0];
-        this.policyNum = params.get(PROP_POLICY_NUM)[0];
-        this.datePickup = getCalendarFromString(params.get(PROP_DATE_PICKUP)[0]);
-        this.timePickup = params.get(PROP_TIME_PICKUP)[0];
-        this.timeDropoff = params.get(PROP_TIME_DROPOFF)[0];
-        this.driver = params.get(PROP_DRIVER)[0];
-        this.cost = params.get(PROP_COST)[0];
+    public AppointmentModel(SlingHttpServletRequest request) {
+        Map<String, String[]> params = request.getParameterMap();
+        if (params != null && params.get(PROP_POLICY_NUM) != null) {
+            this.locationDestination = params.get(PROP_LOC_DEST)[0];
+            this.locationPickup = params.get(PROP_LOC_PICKUP)[0];
+            this.policyNum = params.get(PROP_POLICY_NUM)[0];
+            this.datePickup = getCalendarFromString(params.get(PROP_DATE_PICKUP)[0]);
+            this.timePickup = params.get(PROP_TIME_PICKUP)[0];
+            this.timeDropoff = params.get(PROP_TIME_DROPOFF)[0];
+            this.driver = params.get(PROP_DRIVER)[0];
+            this.cost = params.get(PROP_COST)[0];
+        }
+    }
+
+    public AppointmentModel(Resource resource) {
+        ValueMap properties = resource.getValueMap();
+        this.locationDestination = properties.get(PROP_LOC_DEST, "");
+        this.locationPickup = properties.get(PROP_LOC_PICKUP, "");
+        this.policyNum = properties.get(PROP_POLICY_NUM, "");
+        this.datePickup = properties.get(PROP_DATE_PICKUP, Calendar.class);
+        this.timePickup = properties.get(PROP_TIME_PICKUP, "");
+        this.timeDropoff = properties.get(PROP_TIME_DROPOFF, "");
+        this.driver = properties.get(PROP_DRIVER, "");
+        this.cost = properties.get(PROP_COST, "");
     }
 
     private Calendar getCalendarFromString(String dateString) {

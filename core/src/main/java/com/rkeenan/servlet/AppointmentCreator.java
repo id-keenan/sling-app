@@ -1,7 +1,6 @@
 package com.rkeenan.servlet;
 
 import java.io.IOException;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 
@@ -23,8 +22,7 @@ public class AppointmentCreator extends SlingAllMethodsServlet {
 
     @Override
     protected void doPost(SlingHttpServletRequest request, SlingHttpServletResponse response) throws ServletException, IOException {
-        Map<String, String[]> params = request.getParameterMap();
-        AppointmentModel appointment = new AppointmentModel(params);
+        AppointmentModel appointment = request.adaptTo(AppointmentModel.class);
         String appointmentPath = AppointmentUtil.createAppointment(appointment, request.getResourceResolver());
         AppointmentResponseModel responseModel;
         if (StringUtils.isNotBlank(appointmentPath)) {

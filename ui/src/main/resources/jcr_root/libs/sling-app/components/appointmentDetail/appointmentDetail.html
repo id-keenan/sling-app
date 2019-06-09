@@ -1,0 +1,11 @@
+<div data-sly-use.model="com.rkeenan.components.model.AppointmentDetailModel">
+    <sly data-sly-test.appt="${model.appointment}"/>
+    Pickup: ${appt.locationPickup}<br>
+    Destination: ${appt.locationDestination}<br>
+    Policy Number: ${appt.policyNum}<br>
+    Pickup Date: ${'yyy-MM-dd' @ format=appt.datePickup}<br>
+    Pickup Time: ${appt.timePickup}<br>
+    Dropoff Time: ${appt.timeDropoff}<br>
+    Driver: ${appt.driver}<br>
+    Cost: ${appt.cost}
+</div>

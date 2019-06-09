@@ -14,6 +14,9 @@ import org.apache.sling.api.resource.ResourceUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.rkeenan.Constants.APPT_DETAIL_PAGE_RES_TYPE;
+import static com.rkeenan.Constants.APPT_POLICY_PAGE_RES_TYPE;
+
 public class AppointmentUtil {
 
     private static final Logger log = LoggerFactory.getLogger(AppointmentUtil.class);
@@ -35,7 +38,7 @@ public class AppointmentUtil {
         }
         try {
             Map<String, Object> policyMap = new HashMap<>();
-            policyMap.put(ResourceResolver.PROPERTY_RESOURCE_TYPE, "sling-app/pages/policyPage");
+            policyMap.put(ResourceResolver.PROPERTY_RESOURCE_TYPE, APPT_POLICY_PAGE_RES_TYPE);
             Resource policyPath = ResourceUtil.getOrCreateResource(resourceResolver, createPath(root.getPath(), model.getPolicyNum()), policyMap, "", true);
             int numChild = IteratorUtils.size(policyPath.listChildren());
             Resource appointmentResource = ResourceUtil.getOrCreateResource(resourceResolver, createPath(policyPath.getPath(), Integer.toString(numChild + 1)), addResType(model.getPropertyMap()), "", true);
@@ -47,8 +50,19 @@ public class AppointmentUtil {
         return "";
     }
 
+    public static Resource getAppointmentDetailPage(Resource resource) {
+        if (resource == null) {
+            return null;
+        }
+        if (resource.isResourceType(APPT_DETAIL_PAGE_RES_TYPE)) {
+            return resource;
+        } else {
+            return getAppointmentDetailPage(resource.getParent());
+        }
+    }
+
     private static Map<String, Object> addResType(Map<String, Object> properties) {
-        properties.put(ResourceResolver.PROPERTY_RESOURCE_TYPE, "sling-app/pages/appointmentDetailPage");
+        properties.put(ResourceResolver.PROPERTY_RESOURCE_TYPE, APPT_DETAIL_PAGE_RES_TYPE);
         return properties;
     }
 
