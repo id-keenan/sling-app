@@ -1,7 +1,7 @@
 <section data-sly-use.model="com.rkeenan.components.model.PolicyAppointmentListModel">
     <h1>Policy Number: <span>${model.policyNum}</span></h1>
     <sly data-sly-use.template="../common/templates.html"/>
-    <ul data-sly-list="${model.appointments}">
+    <ul data-sly-list="${model.appointments}" class="appt-list">
         <sly data-sly-call="${template.listItem @appointment=item}"/>
     </ul>
 </section>

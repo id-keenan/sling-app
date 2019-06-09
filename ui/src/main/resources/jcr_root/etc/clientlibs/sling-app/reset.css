@@ -50,3 +50,15 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 1000px #fcbb6d inset;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+ul,
+ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}

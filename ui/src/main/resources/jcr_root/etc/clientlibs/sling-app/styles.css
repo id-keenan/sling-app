@@ -26,7 +26,7 @@ html {
   margin: 0 0 30px;
 }
 
-[action="/appointment-creator"] {
+[action="/appt-creator"] {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -156,32 +156,31 @@ form [type="submit"]:hover {
   background-color: #1B364B;
 }
 
-.appointment-list {
+.appt-list {
   display: flex;
-  flex-flow: column;
-  flex-direction: row;
+  flex-flow: column nowrap;
   max-width: 1200px;
   width: 100%;
+  margin: 0 auto;
 }
 
-.appointment {
+.appt {
   width: 20%;
   border-radius: 15px;
   display: flex;
   flex-flow: column;
   padding: 10px 10px;
   text-decoration: none;
-  background-color: #2C5372;
-  color: #fff;
+  color: currentColor;
   margin-right: 2px;
 }
 
-.appointment:hover {
-  background-color: #1B364B;
+.appt:hover {
+  /*background-color: #1B364B;*/
 }
 
 .policy-list {
-  background-color: #5183AA;
+  /*background-color: #5183AA;*/
 }
 
 .policy-item {
@@ -204,5 +203,5 @@ form [type="submit"]:hover {
 }
 
 .policy-item > a:hover {
-  background-color: #1B364B;
+  /*background-color: #1B364B;*/
 }
