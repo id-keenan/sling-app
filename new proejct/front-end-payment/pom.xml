@@ -26,6 +26,7 @@
 
     <modules>
         <module>core</module>
+        <module>react-app</module>
         <module>ui.apps</module>
         <module>ui.content</module>
         <module>it.tests</module>
@@ -327,7 +328,9 @@
             <id>adobe-public</id>
 
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>!skip-adobe-public</name>
+                </property>
             </activation>
 
             <properties>
@@ -586,7 +589,7 @@
             <dependency>
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
-                <version>5.4.1</version>
+                <version>5.4.2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

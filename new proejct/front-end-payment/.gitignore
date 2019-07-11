@@ -74,3 +74,6 @@ buildNumber.properties
 ### IntelliJ ###
 .idea/
 *.iml
+
+### React Output Clientlib ###
+**/jpmc-gpx/clientlibs/jpmc-gpx-react
