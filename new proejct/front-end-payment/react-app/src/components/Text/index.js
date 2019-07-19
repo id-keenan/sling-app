@@ -52,4 +52,4 @@ class Text extends Component {
     }
 }
 
-export default MapTo('mysamplespa/components/text')(Text, TextEditConfig);
+export default MapTo('jpmc-gpx/components/content/text')(Text, TextEditConfig);

@@ -29,4 +29,4 @@ class AppPage extends Page {
     }
 }
 
-export default MapTo('mysamplespa/components/page')(withComponentMappingContext(withRoute(AppPage)));
+export default MapTo('jpmc-gpx/components/structure/page')(withComponentMappingContext(withRoute(AppPage)));
